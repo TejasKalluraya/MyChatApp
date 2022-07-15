@@ -33,7 +33,7 @@ header{
     padding-bottom:10px ;
     border-bottom: 0.5px solid black ;
 }
-.error-txt{
+.error-text{
     color:#a85d99 ;
     background-color: #443857;
     padding: 8px 6px;
@@ -57,6 +57,12 @@ input{
     border: 1px solid black;
     border-radius: 5px;
     margin: 5px 5px 5px 5px;
+}
+i{
+    align-items: center;
+    text-align: center;
+    justify-self: center;
+    justify-items: center;
 }
 
 /* CSS for Users List  */
