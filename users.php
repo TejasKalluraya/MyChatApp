@@ -1,78 +1,43 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>MyChatApp | Tejas Kalluraya</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="wrapper">
-            <section class="users">
-                <header>
-                    <div class="usercontent">
-                        <img src="userimg.jpg" alt="user image" height="50";
-                        width="50">
-                        <div class="details">
-                            <span>Tejas Kalluraya</span>
-                            <p>Active now</p>
-                            <a href="#" class="logout">Logout</a>
-                        </div>
-                    </div>
-                    
-                </header>
-                <div class="search">
-                    <span class="text">Select an user to chatting </span>
-                    <input type="text" placeholder="Enter name to search...">
-                    <button><i class="fa fa-search"></i></button>
-                </div>
-                <div class="users-list">
-                    <a href="#"></a>
-                    
-                    <a href="#">
-                    <div class="content">
-                        <div class="activeuser">
-                        <img class="image" src="userimg.jpg" alt="user image" height="50";
-                        width="50">
-                        <div class="details">
-                        <span>Tejas Kalluraya</span>
-                        <p>test message</p>
-                        <div class="status-dot"><i class="fa fa-circle"></i></div><br>
-                        </div>
-                        </div>
-                    </a>
-                        
-                    <a href="#">
-                        <div class="activeuser">
-                        <img class="image" src="userimg.jpg" alt="user image" height="50";
-                        width="50">
-                        <div class="details">
-                        <span>Tejas Kalluraya</span>
-                        <p>test message</p>
-                        <div class="status-dot"><i class="fa fa-circle"></i></div>
-                        </div>
-                        </div>
-                    </a>
+<?php 
+  session_start();
+  include_once "php/config.php";
+  if(!isset($_SESSION['unique_id'])){
+    header("location: login.php");
+  }
+?>
+<?php include_once "header.php"; ?>
+<body>
+  <div class="wrapper">
+    <section class="users">
+      <header>
+        <div class="content">
+          <?php 
+            $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
+            if(mysqli_num_rows($sql) > 0){
+              $row = mysqli_fetch_assoc($sql);
+            }
+          ?>
+          <img src="php/images/<?php echo $row['img']; ?>" alt="image" height=50px; width=50px; style="display:block;margin:auto;">
+          <div class="details">
+            <p style="width:150px; justify-self:center"><?php echo $row['fname']. " " . $row['lname'] ?></p><br>
+            <p style="width:150px">&nbsp(<?php echo $row['status']; ?>)&nbsp</p><br>
+            <a href="php/logout.php?logout_id=<?php echo $row['unique_id']; ?>" class="logout">Logout</a>
+          </div>  
+    </header>
+      <div class="search">
+        <span class="text">Select an user to start chat</span>
+        <input type="text" placeholder="Enter name to search...">
+        <button style="height:45px;width:60px;"><i class="fas fa-search"></i></button>
+      </div>
+      <p style="padding:12px; width:100%;"> ACTIVE USERS </p>
+      <br/>
+      <div class="users-list">
+  
+      </div>
+    </section>
+  </div>
 
-                    <a href="#">
-                        <div class="activeuser">
-                        <img class="image" src="userimg.jpg" alt="user image" height="50";
-                        width="50">
-                        <div class="details">
-                        <span>Tejas Kalluraya</span>
-                        <p>test message</p>
-                        <div class="status-dot"><i class="fa fa-circle"></i></div>
-                        </div>
-                        </div>
-                    </a>
+  <script src="javascript/users.js"></script>
 
-                    </div>
-                </div>
-            </section>    
-        </div>
-    </body>
-</html>         
+</body>
+</html>

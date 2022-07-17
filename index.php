@@ -29,7 +29,7 @@
         <div class="field input">
           <label>Password</label>
           <input type="password" name="password" placeholder="Enter new password" required>
-          <i class="fas fa-eye" style="  display: flex;justify-content: center;align-items: center;"></i>
+          <i class="fas fa-eye" style=" display: flex;justify-content: center;align-items: center;"></i>
         </div>
         <div class="field image">
           <label>Select Image</label>
