@@ -1,2 +1,2 @@
 # MyChatApp
-Chat App built using PHP & MySQL with features like Activity Status and Sign Up
+Chat App built using PHP, MySQL and Javascript with features like Activity Status, Sign Up and Message Preview
