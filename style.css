@@ -114,16 +114,14 @@ justify-items: center;
     display: flex;
     justify-items: center;
 }
-.details{
-   
-
-
-}
-
-
 
 .users-list .status-dot{
     color: #6432b5;
+    font-size: small;
+}
+
+.users-list a .status-dot.offline{
+    color: white;
     font-size: small;
 }
 .chat-box{
